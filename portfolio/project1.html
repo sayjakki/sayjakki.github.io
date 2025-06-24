@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Main Election Project</title>
+  <!-- CSS 연결 -->
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <!-- Font Load -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- ✅ Fitty 플러그인 (그대로 유지) -->
+  <script src="https://cdn.jsdelivr.net/npm/fitty@2.3.6/dist/fitty.min.js"></script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header animate-nav">
+    <div class="container">
+      <a href="/" class="logo">Branding & Design Studio</a>
+      <nav class="nav-links">
+        <a href="#">About</a>
+        <a href="#">Insta</a>
+        <a href="#">Let’s Talk</a>
+      </nav>
+
+      <!-- 햄버거 버튼 -->
+      <button class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+
+  <!-- 오버레이 메뉴 -->
+  <div class="overlay-nav" id="overlayNav">
+    <nav class="overlay-menu">
+      <a href="#about">About</a>
+      <a href="#insta">Insta</a>
+      <a href="#contact">Let’s Talk</a>
+    </nav>
+  </div>
+
+
+  <!-- Hero Marquee -->
+  <section class="hero-marquee-wrapper">
+    <div class="hero-marquee-track">
+      <span class="fade-in-word delay-1">Main</span>&nbsp;
+      <span class="fade-in-word delay-2">Election</span>&nbsp;&nbsp;&nbsp;
+
+    <!-- 이후 반복되는 marquee 텍스트는 일반 span으로 -->
+      <span>Main Election&nbsp;&nbsp;&nbsp;</span>
+      <span>Main Election&nbsp;&nbsp;&nbsp;</span>
+    </div>
+  </section>
+
+  <!-- Project Content -->
+  <section class="project-detail-container">
+    <div class="container">
+      <div class="project-content-grid">
+        <!-- ✅ sticky 텍스트 영역 -->
+        <div class="project-info">
+          <div class="project-meta">
+            <div class="meta-item">
+              <strong>Client</strong>
+               <span class="meta-text">Yonhap News</span>
+            </div>
+            <div class="meta-item">
+              <strong>Year</strong>
+              <span class="meta-text">2022</span>
+            </div>
+          </div>
+          <div>
+            <strong>About</strong>
+            <p>
+              We set out to break from politics as usual, creating a bold, fresh alternative for a political brand. At its core is a simple, memorable green circle—symbolizing a sustainable planet and a call to action: Go Green. Its simplicity allows anyone to recreate it with everyday materials, reinforcing the idea of collective action and a future shaped by all of us.
+              <br><br>
+              Across 2024, hundreds of Green Party members—from volunteers to MPs—came together in online workshops to help shape the brand and uncover the key issues facing Canadians. Their insights directly informed the strategy, ensuring relevance and authenticity in every image and message.
+              <br><br>
+              The typography reflects the Party's modernity and heritage. GP Neue Montreal, designed by Pangram Pangram with custom modifications by Matt Boyd, is paired with Gelica, a contemporary take on Windsor—the Green Party’s original typeface from 1984.
+            </p>
+          </div>
+          <div>
+            <strong>Services</strong>
+            <p>...</p>
+          </div>
+        </div>
+
+        <!-- ✅ 스크롤 가능한 이미지 영역 -->
+        <div class="project-image hero-image">
+          <img src="../assets/img/main-election.png" alt="Main Election" sizes="calc(100vw - 40px)" />
+          <img src="../assets/img/main-election.png" alt="Main Election" sizes="calc(100vw - 40px)" />
+          <img src="../assets/img/main-election.png" alt="Main Election" sizes="calc(100vw - 40px)" />
+          <img src="../assets/img/main-election.png" alt="Main Election" sizes="calc(100vw - 40px)" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✅ Featured Projects 전체 섹션 -->
+  <section class="featured-projects">
+
+    <!-- ✅ 제목과 'All Projects' 링크를 담는 상단 영역 -->
+    <div class="featured-header">
+      <h2>Featured Projects</h2>
+      <a href="/index.html" class="all-projects-link">All Projects</a>
+    </div>
+
+    <!-- ✅ 프로젝트 썸네일 3개를 보여주는 그리드 영역 -->
+  <div class="featured-grid">
+    <div class="featured-item-wrap">
+      <div class="featured-item yellow"></div>
+      <div class="featured-title">Invictus Games</div>
+    </div>
+
+    <div class="featured-item-wrap">
+      <div class="featured-item pink"></div>
+      <div class="featured-title">1 Mill Road</div>
+    </div>
+
+    <div class="featured-item-wrap">
+      <div class="featured-item green"></div>
+      <div class="featured-title">Mountain Equipment Company</div>
+    </div>
+  </div>
+  </section>
+
+    <footer class="site-footer">
+  <section class="hero">
+    <h1 class="fit-text">Tomorrow</h1>
+    <div class="container"></div>
+  </section>
+  
+    <div class="footer-nav">
+      <div class="footer-nav-left">©2024</div>
+      <div class="footer-nav-right">
+        <a href="#">Instagram</a>
+        <a href="#">Let’s Talk</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="../js/script.js" defer></script>
+</body>
+</html>

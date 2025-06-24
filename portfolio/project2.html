@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project 1 – SayJakki</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,700&display=swap" rel="stylesheet">
+  <style>
+    .project-detail-container {
+      padding: 80px 20px 100px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .project-detail-container h1 {
+      font-size: clamp(48px, 12vw, 160px);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 40px;
+    }
+
+    .project-detail-container img {
+      width: 100%;
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 60px;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    @media (max-width: 768px) {
+      .project-detail-container h1 {
+        text-align: left;
+        font-size: clamp(32px, 16vw, 80px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="logo"><a href="../index.html">Tomorrow</a></div>
+      <nav class="nav-links">
+        <a href="#">About</a>
+        <a href="#">Insta</a>
+        <a href="#">Let’s Talk</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="project-detail-container">
+    <h1>Main Election Project</h1>
+    <img src="../assets/img/main-election.png" alt="Main Election Design" />
+    <a class="back-link" href="../index.html">← Back to main</a>
+  </section>
+
+</body>
+</html>
