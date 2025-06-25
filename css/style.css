@@ -755,6 +755,14 @@ body.menu-open .hamburger span {
     display: flex;
     color: white;
   }
+
+    .nav-links {
+    display: none;
+  }
+
+  .overlay-menu.active {
+    display: flex;
+  }
   
 
   .project-grid {
@@ -791,7 +799,7 @@ body.menu-open .hamburger span {
   }
 
   .mobile-logo {
-    display: inline;
+    display: block;
   }
 
     .hero {
@@ -799,6 +807,10 @@ body.menu-open .hamburger span {
     margin-bottom:20px;
   }
 
+    .hero-text {
+    animation-duration: 8s;  /* ← 모바일에선 빠르게 */
+  }
+  
     .footer-info {
     font-size: 24px;
   }

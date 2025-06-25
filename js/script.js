@@ -66,4 +66,14 @@ thumbs.forEach(thumb => {
   });
 });
 
+// [4] 히어로 텍스트 빠르게
+// 커서 생성
+const heroText = document.querySelector('.hero-text');
+
+if (window.innerWidth <= 768) {
+  heroText.style.animationDuration = '8s';
+} else {
+  heroText.style.animationDuration = '20s';
+}
+
 
