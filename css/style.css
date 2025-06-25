@@ -26,7 +26,7 @@ a {
 }
 
 /* =====================
-  [Header]
+  [Header] 네비게이션 + 로고 + 햄버거 메뉴
 ====================== */
 .site-header {
   background-color: white;
@@ -43,35 +43,178 @@ a {
   align-items: center;
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: 500; /* ✅ 메뉴와 통일되게 500으로 맞춤 */
-  color: #000;
-  transition: color 0.3s ease;
-  cursor: pointer; /* ✅ 손가락 커서로 변경 */
-  letter-spacing: 0.02em;
-}
-.logo:hover {
-  color: #999;
-}
-
-/* ✅ nav 링크만 따로 스타일링 */
+/* ✅ 네비게이션 */
 .nav-links {
   display: flex;
   gap: 24px;
 }
 
 .nav-links a {
-  font-weight: 500; /* logo와 통일감 있는 weight */
   font-size: 24px;
+  font-weight: 500;
   letter-spacing: 0.02em;
   color: #000;
   transition: color 0.3s ease;
 }
 
+/* ✅ 로고 */
+.logo {
+  font-size: 24px;
+  font-weight: 500; 
+  letter-spacing: 0.02em;
+  color: #000;
+  transition: color 0.3s ease;
+  cursor: pointer; /* 손가락 커서로 변경 */
+}
+
+.desktop-logo {
+  display: inline; /* 데스크탑용 보여주기 */
+}
+
+.mobile-logo {
+  display: none;  /* 모바일용 숨기기 */
+}
+
+.logo:hover,
 .nav-links a:hover {
   color: #999;
 }
+
+/* ✅ 햄버거 메뉴 */
+.hamburger {
+  display: none;   /* 데스크탑용 숨기기 */
+  position: absolute;
+  top: 24px;
+  right: 24px;/* 고정 위치 (overlay에서도 동일) */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 12px;
+  z-index: 10001; /* overlay-nav 위로 */
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  
+}
+
+.hamburger span { /* 햄버거 메뉴 막대 3개 공통 스타일 */
+  display: block;
+  height: 4px;
+  background-color: #111;
+  border-radius: 0;
+  transition: all 0.3s ease-in-out; /* ✅ 애니메이션 부드럽게 */
+  transform-origin: center;  /* 중심 기준 회전 */
+}
+
+.hamburger.open span {
+  background-color: white;
+}
+
+/* 햄버거 두번째 라인 안보이게 */
+.hamburger .invisible {
+  opacity: 0;
+}
+
+/* X 상태로 전환 */
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(3px, 3px);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(3px, -3px);
+}
+
+
+/* =====================
+  [Overlay Nav] 헤더 + 메뉴 + 푸터
+====================== */
+
+
+/* 햄버거 메뉴 눌렀을 때 보이도록 활성화 */
+.overlay-nav.active {
+  display: flex;
+  transition: opacity 0.5s ease;
+}
+
+/* ✅ 오버레이 메뉴 */
+.overlay-nav {
+  position: fixed;
+  inset: 0; /* top: 0, left: 0, right: 0, bottom: 0 */
+  background: black;
+  color: white;
+  display: none; /* 기본은 숨김 */
+  flex-direction: column;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+
+/* 오버레이 안에서도 햄버거(X) 위치 지정 */
+.overlay-nav .hamburger {
+  align-self: flex-end;
+  margin-bottom: 0px;
+}
+
+/* 오버레이 상단 (로고 + X버튼) */
+.overlay-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 10001;
+  padding: 10px;
+}
+
+.overlay-header .white-logo {
+  color: white;
+  font-size: 24px;
+  font-weight: 500;
+  padding: 0 10px;
+}
+
+.overlay-header .hamburger span {
+  background-color: white; /* X 버튼 막대 색상 */
+}
+
+/* 오버레이 메뉴 항목 (About, Insta 등) */
+.overlay-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  font-size: 40px;
+  font-weight: 800;
+  text-align: left;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  padding: 60px 20px;
+  color: white;
+}
+
+/* ✅ 메뉴 항목 텍스트 보이게 하기 */
+.overlay-menu a {
+  all: unset; /* 기본 스타일 제거 */
+  cursor: pointer;
+  color: white;
+}
+
+/* 오버레이 하단 푸터 */
+.overlay-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  padding: 20px 20px;
+}
+
+
 
 /* =====================
   [Hero]
@@ -83,12 +226,11 @@ a {
 
 .hero h1,
 .hero-title {
-  font-size: clamp(18px, 19vw, 440px);
+  font-size: clamp(18px, 17.9vw, 700px);
   font-weight: 900;
   line-height: 1.1;
   text-align: center;         /* ✅ 중앙 정렬 */
   white-space: nowrap;
-  padding: -15px -15px; /* ✅ 추가 – 모바일에서 좌우 여백 맞춰줌 */
   box-sizing: border-box; /* ✅ 패딩 포함 계산 */
 }
 
@@ -232,7 +374,7 @@ a {
 .project-info p  {
   font-weight: 500;
   font-size: 16px;
-  margin-bottom: 12px;
+  margin-bottom: 4px;
   line-height: 1.4;
   letter-spacing: -0.6px;
   color: #000;
@@ -328,32 +470,57 @@ a {
   color: #000;
 }
 
-/* =====================
-  [Overlay Nav]
-====================== */
-.overlay-nav {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100vh;
-  background: #000;
-  color: #fff;
-  z-index: 99;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.overlay-nav.active {
+
+
+/* 초기 설정 */
+.menu-item {
   display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  overflow: hidden;
 }
-.overlay-menu a {
-  font-weight: 500;
-  font-size: 24px;
-  letter-spacing: 0.02em;
+
+.menu-text {
+  font-size: 48px;
+  font-weight: 700;
   color: white;
-  margin: 1rem 0;
-  transition: color 0.3s ease;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* 텍스트 등장 애니메이션 */
+.menu-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.underline {
+  height: 2px;
+  width: 0%;
+  background-color: white;
+  margin-bottom: 8px;
+  transition: width 0.6s ease;
+}
+
+.menu-item .underline.expand {
+  width: 100%;
+}
+
+/* 딜레이 클래스 */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.3s; }
+.delay-3 { transition-delay: 0.5s; }
+.delay-4 { transition-delay: 0.7s; }
+
+/* 오버레이 푸터 */
+.overlay-footer {
+  margin-top: 60px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
 }
 
 
@@ -440,39 +607,6 @@ a {
 
 
 /* =====================
-  [Hamburger Menu]
-====================== */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 20px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  color: #000;
-}
-.hamburger span {
-  display: block;
-  height: 4px;
-  background-color: #111;
-  border-radius: 0;
-  transition: all 0.3s ease;
-}
-.hamburger.open span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-.hamburger.open span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.open span:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
-}
-
-
-/* =====================
   [Theme When Menu Open]
 ====================== */
 body.menu-open .site-header {
@@ -492,29 +626,44 @@ body.menu-open .hamburger span {
   [Footer]
 ====================== */
 .site-footer {
-  padding-top: 10px;
-  padding-bottom: 20px;
-  overflow: hidden;
-}
-.footer-nav {
-  display: flex;
-  gap:24px;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 0px 24px 0px;
-  font-weight: 500;
-  font-size: 24px;
-}
-.footer-nav-right a {
-  margin-left: 24px;
-  font-weight: 500;
-  text-decoration: none;
-  font-size: 24px;
-  color: #000;
-  letter-spacing: 0.02em;
-  transition: color 0.3s ease;
+  padding: 140px 20px 20px;
+  text-align: center;
 }
 
+.footer-hero {
+  padding-right: 20px;
+  text-align: center;
+}
+
+.footer-hero .footer-title {
+  font-size: clamp(18px, 17.9vw, 700px);
+  font-weight: 900;
+  line-height: 1.1;
+  text-align: center;
+  white-space: nowrap;
+  margin: 0 auto;
+  padding: 0;
+  display: inline-block;
+}
+
+.footer-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.footer-right a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #000;
+}
+
+.footer-right a:first-child {
+  margin-left: 0;
+}
 .footer-nav-right a:hover {
   color: #999;
 }
@@ -556,12 +705,12 @@ body.menu-open .hamburger span {
 /* ✅ 마우스 따라다니는 'View Project' 원형 커서 */
 .custom-cursor {
   position: fixed;
-  width: 132px;
-  height: 132px;
+  width: 110px;
+  height: 110px;
   background-color: black;
   color: white;
   font-size: 16px;
-  font-weight: 510;
+  font-weight: 400;
   font-family: 'inter', sans-serif;
   text-transform: uppercase;
   text-align: center;
@@ -582,27 +731,23 @@ body.menu-open .hamburger span {
   [Responsive]
 ====================== */
 @media (max-width: 768px) {
-  .project-grid {
-    grid-template-columns: 1fr;
-  }
-
+ 
+  /* 네비게이션 + 햄버거 */
   nav a {
     display: none;
   }
 
   .hamburger {
     display: flex;
+    color: white;
+  }
+  
+
+  .project-grid {
+    grid-template-columns: 1fr;
   }
 
-  .footer-nav {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .footer-nav-right a {
-    margin-left: 0;
-    font-size: 16px;
-  }
+  
 
   .project-detail-container {
     padding: 10px 0 100px;
@@ -625,6 +770,34 @@ body.menu-open .hamburger span {
     min-width: 0;
     padding-right: 12px;
     margin-top: 0;
+  }
+
+    .desktop-logo {
+    display: none;
+  }
+
+  .mobile-logo {
+    display: inline;
+  }
+
+    .hero {
+    padding-top: 100px; /* 원하는 만큼 조절 가능 */
+    margin-bottom:20px;
+  }
+
+    .footer-info {
+    font-size: 24px;
+  }
+
+  .footer-right {
+    display: none;
+  }
+
+  .footer-hero {
+    padding-top: 100px; /* 원하는 만큼 조절 가능 */
+    margin-bottom:20px;
+    font-size: clamp(24px, 12vw, 48px);
+    white-space: normal;  
   }
 }
 

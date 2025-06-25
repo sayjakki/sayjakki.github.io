@@ -5,44 +5,68 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tomorrow</title>
 
-  <!-- CSS 연결 -->
+  <!-- [1] CSS 연결 -->
   <link rel="stylesheet" href="css/style.css" />
 
-  <!-- Font Load -->
+  <!-- [2] 구글 폰트 Inter 불러오기 -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <!-- ✅ Fitty 플러그인 (그대로 유지) -->
+  <!-- [3] Fitty 플러그인: 히어로 텍스트 대응용 (유지) -->
   <script src="https://cdn.jsdelivr.net/npm/fitty@2.3.6/dist/fitty.min.js"></script>
-
 </head>
 
 <body>
+  <!-- [4] HEADER: 네비게이션 + 로고 + 햄버거 메뉴 -->
   <header class="site-header animate-nav">
     <div class="container">
-      <a href="/" class="logo">Branding & Design Studio</a>
+
+      <!-- 로고: 데스크탑/모바일 버전 따로 표시 -->
+      <a href="/" class="logo">
+        <span class="desktop-logo">Branding & Design Studio</span>
+        <span class="mobile-logo">Tomorrow</span>
+      </a>
+
+      <!-- 데스크탑 네비게이션 링크 -->
       <nav class="nav-links">
-        <a href="#">About</a>
+        <a href="pages/about.html">About</a>
         <a href="#">Insta</a>
         <a href="#">Let’s Talk</a>
       </nav>
 
-      <!-- 햄버거 버튼 -->
+      <!-- 햄버거 메뉴 버튼 (모바일용) -->
       <button class="hamburger" id="hamburger">
         <span></span>
+        <span class="invisible"></span>
         <span></span>
       </button>
     </div>
   </header>
 
-  <!-- 오버레이 메뉴 -->
+  <!-- [5] OVERLAY NAV: 햄버거 클릭 시 보이는 전체화면 메뉴 -->
   <div class="overlay-nav" id="overlayNav">
+
+  <div class="overlay-header">
+    <a href="/" class="logo white-logo">Tomorrow</a>
+      <button class="hamburger open" id="hamburgerClose">
+        <span></span>
+        <span class="invisible"></span>
+        <span></span>
+      </button>
+    </div>
+
     <nav class="overlay-menu">
-      <a href="#about">About</a>
-      <a href="#insta">Insta</a>
+      <a href="pages/about.html">About</a>
+      <a href="https://www.instagram.com/sayjakki/">Insta</a>
       <a href="#contact">Let’s Talk</a>
     </nav>
+
+    <div class="overlay-footer">
+      <div>© 2024</div>
+      <div>Branding & Design Studio</div>
+    </div>
   </div>
 
+  <!-- [6] HERO: 메인 히어로 타이틀 -->
   <section class="hero">
     <div class="hero-mask">
       <h1 class="hero-text">Tomorrow</h1>
@@ -50,61 +74,64 @@
     <div class="container"></div>
   </section>
 
-<section class="projects">
-  <div class="container">
-    <div class="project-grid hero-image">
+  <!-- [7] PROJECTS: 프로젝트 타일 4개 (2 x 2 그리드) -->
+  <section class="projects">
+    <div class="container">
+      <div class="project-grid hero-image">
 
-      <a href="portfolio/project1.html" class="project-item yellow">
-        <div class="project-thumb">
-          <div class="circle-overlay"><span></span></div>
-        </div>
-        <div class="project-title">Green party of Korea</div>
-      </a>
+        <!-- ✅ Project 1 -->
+        <a href="pages/project1.html" class="project-item yellow fade-up delay-1">
+          <div class="project-thumb">
+            <div class="circle-overlay"><span></span></div>
+          </div>
+          <div class="project-title">Project 1</div>
+        </a>
 
-      <a href="portfolio/project2.html" class="project-item blue">
-        <div class="project-thumb">
-          <div class="circle-overlay"><span></span></div>
-        </div>
-        <div class="project-title">Project 2</div>
-      </a>
+        <!-- ✅ Project 2 -->
+        <a href="pages/project2.html" class="project-item blue fade-up delay-1">
+          <div class="project-thumb">
+            <div class="circle-overlay"><span></span></div>
+          </div>
+          <div class="project-title">Project 2</div>
+        </a>
 
-      <div class="project-item green">
-        <div class="project-thumb">
-          <div class="circle-overlay"><span></span></div>
+        <!-- ✅ Project 3 -->
+        <div class="project-item green fade-up delay-2">
+          <div class="project-thumb">
+            <div class="circle-overlay"><span></span></div>
+          </div>
+          <div class="project-title">Project 3</div>
         </div>
-        <div class="project-title">Project 3</div>
+
+        <!-- ✅ Project 4 -->
+        <div class="project-item red">
+          <div class="project-thumb">
+            <div class="circle-overlay"><span></span></div>
+          </div>
+          <div class="project-title">Project 4</div>
+        </div>
+
       </div>
-
-      <div class="project-item red">
-        <div class="project-thumb">
-          <div class="circle-overlay"><span></span></div>
-        </div>
-        <div class="project-title">Project 4</div>
-      </div>
-
     </div>
-  </div>
-</section>
-
-
-  <footer class="site-footer">
-  <section class="hero">
-    <h1 class="fit-text">Tomorrow</h1>
-    <div class="container"></div>
   </section>
-  
-    <div class="footer-nav">
-      <div class="footer-nav-left">©2024</div>
-      <div class="footer-nav-right">
+
+  <!-- [8] FOOTER: 하단 정보 영역 -->
+  <footer class="site-footer">
+    <section class="footer-hero">
+      <h1 class="footer-title">Tomorrow</h1>
+    </section>
+
+    <div class="footer-info">
+      <div class="footer-left">© 2024</div>
+      <div class="footer-center">Branding & Design Studio</div>
+      <div class="footer-right">
         <a href="#">Instagram</a>
         <a href="#">Let’s Talk</a>
       </div>
     </div>
   </footer>
 
-  
-
-  <!-- JS 연결 -->
+  <!-- [9] JS 연결 -->
   <script src="js/script.js" defer></script>
 </body>
 </html>
