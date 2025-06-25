@@ -15,7 +15,13 @@ body {
 
 html, body {
   width: 100%;
+  max-width: 100%;
   overflow-x: hidden;
+}
+
+img, div, section {
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 a {
@@ -27,8 +33,10 @@ a {
   [Layout Container]
 ====================== */
 .container {
-  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
   padding: 0 20px;
+  margin: 0 auto;
 }
 
 /* =====================
