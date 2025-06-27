@@ -71,9 +71,9 @@ thumbs.forEach(thumb => {
 const heroText = document.querySelector('.hero-text');
 
 if (window.innerWidth <= 768) {
-  heroText.style.animationDuration = '8s';
+  heroText.style.animationDuration = '0.5s';
 } else {
-  heroText.style.animationDuration = '20s';
+  heroText.style.animationDuration = '0.5s';
 }
 
 
