@@ -763,7 +763,9 @@ body.menu-open .hamburger span {
     grid-template-columns: 1fr;
   }
 
-  
+ .hamburger {
+    display: flex;
+  }
 
   .project-detail-container {
     padding: 10px 0 100px;
@@ -826,9 +828,7 @@ html, body {
   overflow-x: hidden;
 }
 
-  .hamburger {
-    display: flex !important;
-  }
+ 
 
 @media (max-width: 1200px) {
   .project-content-grid {
