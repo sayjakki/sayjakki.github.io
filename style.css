@@ -34,7 +34,7 @@ a {
 ====================== */
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1600px;
   padding: 0 20px;
   margin: 0 auto;
 }
@@ -234,12 +234,11 @@ a {
 ====================== */
 .hero {
   overflow: hidden;  
-  padding: 0 20px; /* container 기준 여백 */
 } 
 
 .hero h1,
 .hero-title {
-  font-size: clamp(18px, 17.9vw, 700px);
+  font-size: clamp(16px, 18.2vw, 700px);
   font-weight: 900;
   line-height: 1.1;
   text-align: center;         /* ✅ 중앙 정렬 */
