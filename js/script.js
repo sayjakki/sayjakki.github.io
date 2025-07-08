@@ -46,17 +46,29 @@ cursor.classList.add('custom-cursor');
 cursor.innerHTML = 'View<br>Project';
 document.body.appendChild(cursor);
 
-const thumbs = document.querySelectorAll('.project-thumb');
+const thumbs = document.querySelectorAll('.project-grid a');
 
 thumbs.forEach(thumb => {
   thumb.addEventListener('mouseenter', () => {
     cursor.style.transition = 'transform 0.2s ease';
     cursor.style.transform = 'translate(-50%, -50%) scale(1) rotate(-15deg)';
+    // project-title 텍스트 회색으로 변경
+    const projectItem = thumb.closest('.project-item');
+    if (projectItem) {
+      const title = projectItem.querySelector('.project-title');
+      if (title) title.style.color = '#999';
+    }
   });
 
   thumb.addEventListener('mouseleave', () => {
     cursor.style.transition = 'none';
     cursor.style.transform = 'translate(-50%, -50%) scale(0) rotate(-15deg)';
+    // project-title 텍스트 검정으로 복원
+    const projectItem = thumb.closest('.project-item');
+    if (projectItem) {
+      const title = projectItem.querySelector('.project-title');
+      if (title) title.style.color = '#000';
+    }
   });
 
   thumb.addEventListener('mousemove', (e) => {
@@ -75,5 +87,69 @@ if (window.innerWidth <= 768) {
 } else {
   heroText.style.animationDuration = '0.5s';
 }
+
+// [5] Past Projects 더보기 버튼 호버 효과 (JS로 구현)
+const pastProjectsListMore = document.querySelector('.past-projects-list-more');
+if (pastProjectsListMore && window.innerWidth > 1024) {
+  const moreBox = pastProjectsListMore.querySelector('.past-projects-list-more-box');
+  const moreText = pastProjectsListMore.querySelector('.past-projects-list-more-text');
+  pastProjectsListMore.addEventListener('mouseenter', () => {
+    if (moreBox) moreBox.style.background = '#000';
+    if (moreText) moreText.style.color = '#fff';
+  });
+  pastProjectsListMore.addEventListener('mouseleave', () => {
+    if (moreBox) moreBox.style.background = 'rgba(0, 0, 0, 0)';
+    if (moreText) moreText.style.color = '';
+  });
+}
+
+// [6] Past Projects 더보기 버튼 클릭 시 슬라이드 확장/축소
+(function() {
+  const moreBtn = document.querySelector('.past-projects-list-more');
+  const list = document.querySelector('.past-projects-list');
+  if (!moreBtn || !list) return;
+
+  // 이미 확장된 상태인지 저장
+  let expanded = false;
+  // 확장/축소에 사용할 아이템들
+  const items = Array.from(list.querySelectorAll('.past-project-item-wrap'));
+
+  // 기본적으로 6개만 보이게, 나머지는 숨김
+  const defaultShow = 6;
+  items.forEach((item, idx) => {
+    if (idx >= defaultShow) {
+      item.style.maxHeight = '0';
+      item.style.overflow = 'hidden';
+      item.style.transition = 'max-height 0.5s cubic-bezier(0.4,0,0.2,1)';
+    }
+  });
+
+  moreBtn.addEventListener('click', function() {
+    if (!expanded) {
+      // 확장: 나머지 아이템 슬라이드 다운
+      items.forEach((item, idx) => {
+        if (idx >= defaultShow) {
+          item.style.maxHeight = item.scrollHeight + 'px';
+        }
+      });
+      expanded = true;
+      // 버튼 텍스트 변경
+      const text = moreBtn.querySelector('.past-projects-list-more-text');
+      if (text) text.textContent = 'SHOW LESS';
+    } else {
+      // 축소: 나머지 아이템 슬라이드 업
+      items.forEach((item, idx) => {
+        if (idx >= defaultShow) {
+          item.style.maxHeight = '0';
+        }
+      });
+      expanded = false;
+      // 버튼 텍스트 원복
+      const text = moreBtn.querySelector('.past-projects-list-more-text');
+      if (text) text.textContent = 'Show All (34)';
+    }
+  });
+})();
+
 
 
