@@ -16,37 +16,60 @@
 </head>
 
 <body>
-  <!-- Header -->
-  <header class="site-header animate-nav">
-    <div class="container">
-            <a href="/" class="logo">
-        <span class="desktop-logo">Branding & Design Studio</span>
-        <span class="mobile-logo">Tomorrow</span>
-      </a>
-
-      <nav class="nav-links">
-        <a href="pages/about.html">About</a>
-        <a href="https://www.instagram.com/sayjakki/">Insta</a>
-        <a href="#">Let’s Talk</a>
-      </nav>
-
-      <!-- 햄버거 버튼 -->
+  <!-- [4] HEADER: 네비게이션 + 로고 + 햄버거 메뉴 -->
+  <div class="site-header-bar" id="siteHeaderBar">
+    <div class="site-header-inner">
+      <div class="site-header-content">
+        <a class="site-header-logo-link" href="../index.html" id="mainLogoText" style="position:relative; z-index:10; display:block;">
+          Branding &amp; Design Studio
+        </a>
+        <div class="site-header-links">
+          <div class="site-header-link-item">
+            <p class="site-header-link-text">
+              <a class="site-header-link" href="about.html">About</a>
+            </p>
+          </div>
+          <div class="site-header-link-item">
+            <p class="site-header-link-text">
+              <a class="site-header-link" href="https://www.instagram.com/workbytomorrow/" target="_blank" rel="noopener">Insta</a>
+            </p>
+          </div>
+          <div class="site-header-link-item">
+            <p class="site-header-link-text">
+              <a class="site-header-link" href="mailto:info@workbytomorrow.com" target="_blank" rel="noopener">Let's Talk</a>
+            </p>
+          </div>
+        </div>
+      </div>
       <button class="hamburger" id="hamburger">
         <span></span>
+        <span class="invisible"></span>
         <span></span>
       </button>
     </div>
-  </header>
-
-
-  <!-- 오버레이 메뉴 -->
-  <div class="overlay-nav" id="overlayNav">
-    <nav class="overlay-menu">
-      <a href="pages/about.html">About</a>
-      <a href="https://www.instagram.com/sayjakki/">Insta</a>
-      <a href="#contact">Let’s Talk</a>
-    </nav>
   </div>
+  
+  <div class="overlay-nav" id="overlayNav">
+    <div class="overlay-header">
+      <a href="/" class="logo white-logo">Tomorrow</a>
+        <button class="hamburger open" id="hamburgerClose">
+          <span></span>
+          <span class="invisible"></span>
+          <span></span>
+        </button>
+      </div>
+
+      <nav class="overlay-menu">
+        <a href="pages/about.html">About</a>
+        <a href="https://www.instagram.com/sayjakki/">Insta</a>
+        <a href="#contact">Let’s Talk</a>
+      </nav>
+
+      <div class="overlay-footer">
+        <div>© 2024</div>
+        <div>Branding & Design Studio</div>
+      </div>
+    </div>
 
 
   <!-- Hero Marquee -->
@@ -92,13 +115,13 @@
         </div>
 
         <!-- ✅ 스크롤 가능한 이미지 영역 -->
-        <div class="project-image hero-image">
-          <img src="../assets/img/project1_1_3200_1800.png" alt="Main Election" sizes="calc(100vw - 40px)" />
-          <img src="../assets/img/project1_2_3200_1800.png" alt="Main Election" sizes="calc(100vw - 40px)" />
-          <img src="../assets/img/project1_3_3200_1800.png" alt="Main Election" sizes="calc(100vw - 40px)" />
-          <img src="../assets/img/project1_4_3200_1800.png" alt="Main Election" sizes="calc(100vw - 40px)" />
-          <img src="../assets/img/project1_5_3200_1800.png" alt="Main Election" sizes="calc(100vw - 40px)" />
-          
+        <div class="project-image">
+          <img src="../assets/img/main/main_sample_image3.avif" alt="Main Election" sizes="calc(100vw - 40px)" />
+          <img src="../assets/img/main/main_sample_image4.avif" alt="Main Election" sizes="calc(100vw - 40px)" />
+          <img src="../assets/img/main/main_sample_image5.avif" alt="Main Election" sizes="calc(100vw - 40px)" />
+          <img src="../assets/img/main/main_sample_image6.avif" alt="Main Election" sizes="calc(100vw - 40px)" />
+          <img src="../assets/img/main/main_sample_image7.avif" alt="Main Election" sizes="calc(100vw - 40px)" />
+
           <!-- ✅ 영상넣을때 사용하슈
           <video
             src="../assets/img/green-party-tomorrow.mp4"

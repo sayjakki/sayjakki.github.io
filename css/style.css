@@ -247,7 +247,7 @@ a {
 
 .hero-mask {
   overflow: hidden;
-  height: fit-content;
+  min-height: 40vh;
 }
 
 .hero-text {
@@ -255,7 +255,7 @@ a {
   opacity: 0;
   animation: heroIn 0.3s cubic-bezier(0.1, 0.6, 0.2, 0.8) forwards;
   animation-delay: 0.1s;
-  padding-top: 120px;
+  padding-top: 172px;
 }
 
 @keyframes heroIn {
@@ -816,17 +816,15 @@ body.menu-open .hamburger span {
     font-size: 24px;
   }
 
-  .footer-right {
-    display: none;
-  }
-
   .footer-hero {
     padding-top: 100px; /* 원하는 만큼 조절 가능 */
     margin-bottom:20px;
     font-size: clamp(24px, 12vw, 48px);
     white-space: normal;  
   }
+
 }
+
 
 /* 📌 1. 수평 스크롤 방지 */
 html, body {
@@ -1142,4 +1140,140 @@ html, body {
 .project-title,
 .project-thumb {
   cursor: pointer;
+}
+
+.site-header-bar{
+  opacity: 1;
+  will-change: transform;
+  transform: none;
+  flex: none;
+  height: auto;
+  left: 0;
+  background: #fff;
+  mix-blend-mode: difference;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 8;
+  background: transparent;
+}
+.site-header-bar .site-header-logo-text,
+.site-header-bar .site-header-logo-link,
+.site-header-bar .site-header-link-text,
+.site-header-bar .site-header-link {
+  color: #111;
+  mix-blend-mode: normal;
+  opacity: 1;
+  transition: color 0.2s, opacity 0.2s;
+}
+
+.site-header-bar.invert-header-bar .site-header-logo-text,
+.site-header-bar.invert-header-bar .site-header-logo-link,
+.site-header-bar.invert-header-bar .site-header-link-text,
+.site-header-bar.invert-header-bar .site-header-link {
+  color: #fff;
+  mix-blend-mode: difference;
+  opacity: 1;
+}
+
+.site-header-inner{
+  display: contents;
+}
+
+.site-header-content {
+  width: 100%;
+  will-change: transform;
+  opacity: 1;
+  transform: none;
+  align-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: min-content;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 20px;
+  position: relative;
+  height: 60px;
+}
+
+.site-header-logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  position: relative;
+  user-select: none;
+  width: auto;
+  color: var(--extracted-r6o4lv, #fff);
+}
+
+.site-header-logo-text, .site-header-logo-link, .site-header-link-text, .site-header-link {
+  font-weight: 800 !important;
+  letter-spacing: -0.02em;
+  color: #111;
+}
+.site-header-logo-link {
+  font-size: 2rem;
+  font-weight: 900 !important;
+  padding: 16px 0;
+  display: block;
+}
+.site-header-link {
+  font-size: 1.1rem;
+  font-weight: 700 !important;
+}
+
+.site-header-links {
+  align-content: center;
+  align-items: center;
+  display: flex;
+  flex: none;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: min-content;
+  justify-content: center;
+  overflow: visible;
+  padding: 0;
+  position: relative;
+  width: min-content;
+  opacity: 1;
+}
+
+.site-header-link-item {
+    outline: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    --extracted-r6o4lv: var(--token-e674970a-a0b0-469a-a39a-dacb83a9f161, rgb(255, 255, 255));
+    transform: none;
+    opacity: 1;
+    flex: none;
+    height: auto;
+    position: relative;
+    user-select: none;
+    white-space: pre;
+    width: auto;
+}
+
+/* =====================
+  [Scroll Animation]
+====================== */
+/* 스크롤 등장 애니메이션 */
+.project-thumb {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.project-thumb.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .footer-right a.branding-mobile {
+    display: inline-block !important;
+  }
 }

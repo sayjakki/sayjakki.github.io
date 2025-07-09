@@ -14,58 +14,87 @@
 
   <!-- [3] Fitty 플러그인: 히어로 텍스트 대응용 (유지) -->
   <script src="https://cdn.jsdelivr.net/npm/fitty@2.3.6/dist/fitty.min.js"></script>
+
+  <style>
+    @media (max-width: 768px) {
+      .site-header-link-item {
+        display: none !important;
+      }
+      .site-header-logo-link {
+        font-size: 24px !important;
+        font-weight: 900 !important;
+        letter-spacing: 0.02em;
+        color: #111 !important;
+      }
+      .footer-right a.desktop-only {
+        display: none !important;
+      }
+      .footer-right a.branding-mobile {
+        display: inline-block !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
   <!-- [4] HEADER: 네비게이션 + 로고 + 햄버거 메뉴 -->
-  <header class="site-header animate-nav">
-    <div class="container">
-
-      <!-- 로고: 데스크탑/모바일 버전 따로 표시 -->
-      <a href="/" class="logo">
-        <span class="desktop-logo">Branding & Design Studio</span>
-        <span class="mobile-logo">Tomorrow</span>
-      </a>
-
-      <!-- 데스크탑 네비게이션 링크 -->
-      <nav class="nav-links">
-        <a href="pages/about.html">About</a>
-        <a href="https://www.instagram.com/sayjakki/">Insta</a>
-        <a href="#">Let’s Talk</a>
-      </nav>
-
-      <!-- 햄버거 메뉴 버튼 (모바일용) -->
+  <div class="site-header-bar" id="siteHeaderBar">
+    <div class="site-header-inner">
+      <div class="site-header-content">
+        <a class="site-header-logo-link" href="index.html" id="mainLogoText" style="position:relative; z-index:10; display:block;">
+          Branding &amp; Design Studio
+        </a>
+        <div class="site-header-links">
+          <div class="site-header-link-item">
+            <p class="site-header-link-text">
+              <a class="site-header-link" href="pages/about.html">About</a>
+            </p>
+          </div>
+          <div class="site-header-link-item">
+            <p class="site-header-link-text">
+              <a class="site-header-link" href="https://www.instagram.com/workbytomorrow/" target="_blank" rel="noopener">Insta</a>
+            </p>
+          </div>
+          <div class="site-header-link-item">
+            <p class="site-header-link-text">
+              <a class="site-header-link" href="mailto:info@workbytomorrow.com" target="_blank" rel="noopener">Let's Talk</a>
+            </p>
+          </div>
+        </div>
+      </div>
       <button class="hamburger" id="hamburger">
         <span></span>
         <span class="invisible"></span>
         <span></span>
       </button>
     </div>
-  </header>
-
-  <!-- [5] OVERLAY NAV: 햄버거 클릭 시 보이는 전체화면 메뉴 -->
-  <div class="overlay-nav" id="overlayNav">
-
-  <div class="overlay-header">
-    <a href="/" class="logo white-logo">Tomorrow</a>
-      <button class="hamburger open" id="hamburgerClose">
-        <span></span>
-        <span class="invisible"></span>
-        <span></span>
-      </button>
-    </div>
-
-    <nav class="overlay-menu">
-      <a href="pages/about.html">About</a>
-      <a href="https://www.instagram.com/sayjakki/">Insta</a>
-      <a href="#contact">Let’s Talk</a>
-    </nav>
-
-    <div class="overlay-footer">
-      <div>© 2024</div>
-      <div>Branding & Design Studio</div>
-    </div>
   </div>
+    
+  
+  <div class="overlay-nav" id="overlayNav">
+    <div class="overlay-header">
+      <a href="/" class="logo white-logo">Tomorrow</a>
+        <button class="hamburger open" id="hamburgerClose">
+          <span></span>
+          <span class="invisible"></span>
+          <span></span>
+        </button>
+      </div>
+
+      <nav class="overlay-menu">
+        <a href="pages/about.html">About</a>
+        <a href="https://www.instagram.com/sayjakki/">Insta</a>
+        <a href="#contact">Let’s Talk</a>
+      </nav>
+
+      <div class="overlay-footer">
+        <div>© 2024</div>
+        <div>Branding & Design Studio</div>
+      </div>
+    </div>
+  
+  
+  
 
   <!-- [6] HERO: 메인 히어로 타이틀 -->
   <section class="hero">
@@ -372,13 +401,42 @@
     <div class="footer-info">
       <div class="footer-left">© 2024</div>
       <div class="footer-right">
-        <a href="#">Instagram</a>
-        <a href="#">Let’s Talk</a>
+        <a href="https://www.instagram.com/sayjakki/" class="desktop-only">Insta</a>
+        <a href="mailto:info@workbytomorrow.com" class="desktop-only">Let’s Talk</a>
+        <a href="index.html" class="branding-mobile">Branding & Design</a>
       </div>
     </div>
   </footer>
 
   <!-- [9] JS 연결 -->
   <script src="js/script.js" defer></script>
+  <script>
+    // 모바일에서 .site-header-logo-link 텍스트를 Tomorrow로 변경
+    function updateLogoTextForMobile() {
+      var logo = document.getElementById('mainLogoText');
+      if (!logo) return;
+      if (window.innerWidth <= 768) {
+        logo.textContent = 'Tomorrow';
+      } else {
+        logo.textContent = 'Branding & Design Studio';
+      }
+    }
+    window.addEventListener('resize', updateLogoTextForMobile);
+    window.addEventListener('DOMContentLoaded', updateLogoTextForMobile);
+
+    // project-thumb 스크롤 등장 애니메이션
+    function onScrollRevealThumbs() {
+      var thumbs = document.querySelectorAll('.project-thumb');
+      var windowH = window.innerHeight;
+      thumbs.forEach(function(thumb) {
+        var rect = thumb.getBoundingClientRect();
+        if (rect.top < windowH - 60) {
+          thumb.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', onScrollRevealThumbs);
+    window.addEventListener('DOMContentLoaded', onScrollRevealThumbs);
+  </script>
 </body>
 </html>

@@ -79,13 +79,13 @@ thumbs.forEach(thumb => {
 });
 
 // [4] 히어로 텍스트 빠르게
-// 커서 생성
 const heroText = document.querySelector('.hero-text');
-
-if (window.innerWidth <= 768) {
-  heroText.style.animationDuration = '0.5s';
-} else {
-  heroText.style.animationDuration = '0.5s';
+if (heroText) {
+  if (window.innerWidth <= 768) {
+    heroText.style.animationDuration = '0.5s';
+  } else {
+    heroText.style.animationDuration = '0.5s';
+  }
 }
 
 // [5] Past Projects 더보기 버튼 호버 효과 (JS로 구현)
@@ -150,6 +150,25 @@ if (pastProjectsListMore && window.innerWidth > 1024) {
     }
   });
 })();
+
+// 스크롤 방향에 따라 헤더 숨김/노출
+let lastScrollY = window.scrollY;
+const headerBar = document.querySelector('.site-header-bar');
+
+window.addEventListener('scroll', () => {
+  if (!headerBar) return;
+  const currentY = window.scrollY;
+  if (currentY > lastScrollY && currentY > 40) {
+    // 아래로 스크롤: 헤더 숨김
+    headerBar.style.transform = 'translateY(-100%)';
+    headerBar.style.transition = 'transform 0.35s cubic-bezier(.4,0,.2,1)';
+  } else {
+    // 위로 스크롤: 헤더 노출
+    headerBar.style.transform = 'translateY(0)';
+    headerBar.style.transition = 'transform 0.35s cubic-bezier(.4,0,.2,1)';
+  }
+  lastScrollY = currentY;
+});
 
 
 
