@@ -40,19 +40,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // [3] 프로젝트 썸네일에 마우스 올릴 때 'View Project' 커서 따라다니기
-// 커서 생성
 const cursor = document.createElement('div');
 cursor.classList.add('custom-cursor');
 cursor.innerHTML = 'View<br>Project';
 document.body.appendChild(cursor);
 
+// 기존 프로젝트 썸네일
 const thumbs = document.querySelectorAll('.project-grid a');
 
 thumbs.forEach(thumb => {
   thumb.addEventListener('mouseenter', () => {
     cursor.style.transition = 'transform 0.2s ease';
     cursor.style.transform = 'translate(-50%, -50%) scale(1) rotate(-15deg)';
-    // project-title 텍스트 회색으로 변경
     const projectItem = thumb.closest('.project-item');
     if (projectItem) {
       const title = projectItem.querySelector('.project-title');
@@ -63,7 +62,6 @@ thumbs.forEach(thumb => {
   thumb.addEventListener('mouseleave', () => {
     cursor.style.transition = 'none';
     cursor.style.transform = 'translate(-50%, -50%) scale(0) rotate(-15deg)';
-    // project-title 텍스트 검정으로 복원
     const projectItem = thumb.closest('.project-item');
     if (projectItem) {
       const title = projectItem.querySelector('.project-title');
@@ -72,9 +70,32 @@ thumbs.forEach(thumb => {
   });
 
   thumb.addEventListener('mousemove', (e) => {
-    // ✅ 마우스 좌표 기준으로 아래쪽에 위치시킴
     cursor.style.left = `${e.clientX}px`;
-    cursor.style.top = `${e.clientY - 16}px`;  // ✅ 커서 아래쪽으로 이동
+    cursor.style.top = `${e.clientY - 16}px`;
+  });
+});
+
+// [추가] Featured Projects 썸네일에도 커서 기능 적용
+const featuredThumbs = document.querySelectorAll('.featured-item-wrap');
+
+featuredThumbs.forEach(thumb => {
+  thumb.addEventListener('mouseenter', () => {
+    cursor.style.transition = 'transform 0.2s ease';
+    cursor.style.transform = 'translate(-50%, -50%) scale(1) rotate(-15deg)';
+    const title = thumb.querySelector('.featured-title');
+    if (title) title.style.color = '#999';
+  });
+
+  thumb.addEventListener('mouseleave', () => {
+    cursor.style.transition = 'none';
+    cursor.style.transform = 'translate(-50%, -50%) scale(0) rotate(-15deg)';
+    const title = thumb.querySelector('.featured-title');
+    if (title) title.style.color = '#000';
+  });
+
+  thumb.addEventListener('mousemove', (e) => {
+    cursor.style.left = `${e.clientX}px`;
+    cursor.style.top = `${e.clientY - 16}px`;
   });
 });
 
@@ -171,4 +192,205 @@ window.addEventListener('scroll', () => {
 });
 
 
+// DOM 로드 후 실행
+document.addEventListener('DOMContentLoaded', () => {
+  // 데스크톱에서만 고급 sticky 동작 실행
+  if (window.innerWidth > 768) {
+    advancedStickyBehavior();
+  }
+});
+
+// [추가] Past Projects 리스트에 hover 이미지 미리보기 기능 (모바일 제외)
+(function() {
+  if (window.innerWidth <= 768) return; // 모바일에선 미리보기 기능 비활성화
+
+  // 미리보기 이미지 정보 (프로젝트명과 이미지 경로 매핑)
+  const previewImages = {
+    'Design Vancouver Festival': '../assets/img/main/main_sample_image1.avif',
+    "Metrolinx 'T Symbol'": '../assets/img/main/main_sample_image2.avif',
+    'Invictus Games 2025 ↗': '../assets/img/main/main_sample_image3.avif',
+    'Geosource Energy ↗': '../assets/img/main/main_sample_image4.avif',
+    'Christine Sinclair ↗': '../assets/img/main/main_sample_image5.avif',
+    'Props.Cash': '../assets/img/main/main_sample_image6.avif',
+    '1 Mill Road ↗': '../assets/img/main/main_sample_image7.avif',
+    'Locomotive ↗': '../assets/img/main/main_sample_image8.avif',
+    'Vinyl Records ↗': '../assets/img/main/main_sample_image9.avif',
+    'FORM Swim ↗': '../assets/img/main/main_sample_image10.avif',
+    'Skate Canada ↗': '../assets/img/main/main_sample_image11.avif',
+    'Mountain Equipment Company ↗': '../assets/img/main/main_sample_image12.avif',
+    'International Olympic Committee': '../assets/img/main/main_sample_image1.avif',
+    '#StrongerTogether Tokyo 2020': '../assets/img/main/main_sample_image2.avif',
+    'Order of Sport': '../assets/img/main/main_sample_image3.avif',
+  };
+
+  // 미리보기 이미지 DOM 생성
+  const preview = document.createElement('div');
+  preview.className = 'past-project-preview';
+  preview.style.position = 'fixed';
+  preview.style.right = '40px';
+  preview.style.top = '50%';
+  preview.style.transform = 'translateY(-50%)';
+  preview.style.zIndex = '9999';
+  preview.style.pointerEvents = 'none';
+  preview.style.display = 'none';
+  preview.style.boxShadow = '0 8px 32px rgba(0,0,0,0.12)';
+  preview.style.background = '#fff';
+  preview.style.borderRadius = '16px';
+  preview.style.overflow = 'hidden';
+  preview.style.width = '320px';
+  preview.style.height = '200px';
+  preview.style.transition = 'opacity 0.2s';
+  document.body.appendChild(preview);
+
+  const pastItems = document.querySelectorAll('.past-project-item');
+  pastItems.forEach(item => {
+    item.addEventListener('mouseenter', function() {
+      const titleEl = item.querySelector('.past-project-title');
+      if (!titleEl) return;
+      const title = titleEl.textContent.trim();
+      const imgSrc = previewImages[title];
+      if (imgSrc) {
+        preview.innerHTML = `<img src="${imgSrc}" style="width:100%;height:100%;object-fit:cover;display:block;" alt="${title}" />`;
+        // 마우스 위치에 따라 미리보기 위치 조절
+        item.addEventListener('mousemove', function(e) {
+          preview.style.left = `${e.clientX + 32}px`;
+          preview.style.top = `${e.clientY - 100}px`;
+          preview.style.right = '';
+          preview.style.transform = 'translateY(0)';
+        });
+        preview.style.display = 'block';
+        preview.style.opacity = '1';
+      } else {
+        preview.style.display = 'none';
+        preview.innerHTML = '';
+      }
+    });
+    item.addEventListener('mouseleave', function() {
+      preview.style.opacity = '0';
+    });
+  });
+})();
+
+// [추가] Past Projects에 마우스 오버 시 viewpoint marquee 효과 (모바일 제외)
+(function() {
+  if (window.innerWidth <= 768) return; // 모바일에선 marquee 효과 비활성화
+
+  // [마우스 오버 시 viewpoint marquee 효과]
+  const MARQUEE_TEXT = 'viewpoint';
+  const MARQUEE_CLASS = 'past-project-marquee';
+  const MARQUEE_ANIMATION = `@keyframes pastProjectMarqueeMove { from { transform: translateX(0); } to { transform: translateX(-50%); } }`;
+
+  // 스타일 동적으로 추가 (한 번만)
+  if (!document.getElementById('past-project-marquee-style')) {
+    const style = document.createElement('style');
+    style.id = 'past-project-marquee-style';
+    style.innerHTML = `
+      .${MARQUEE_CLASS} {
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        white-space: nowrap;
+        font-size: 30px;
+        font-weight: 700;
+        color: #222;
+        pointer-events: none;
+        z-index: 100;
+        overflow: hidden;
+        background: black;
+        height: 48px;
+        color: #fff;
+      }
+      .${MARQUEE_CLASS} .marquee-track {
+        display: flex;
+        width: max-content;
+        animation: pastProjectMarqueeMove 8s linear infinite;
+        white-space: nowrap;
+        position: relative;
+      }
+      .${MARQUEE_CLASS} .marquee-text {
+        display: inline-block;
+        margin-right: 48px;
+      }
+      .${MARQUEE_CLASS}::before,
+      .${MARQUEE_CLASS}::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 48px;
+        height: 100%;
+        z-index: 101;
+        pointer-events: none;
+      }
+      .${MARQUEE_CLASS}::before {
+        left: 0;
+        background: linear-gradient(to right, black 0%, transparent 100%);
+      }
+      .${MARQUEE_CLASS}::after {
+        right: 0;
+        background: linear-gradient(to left, black 0%, transparent 100%);
+      }
+      @keyframes pastProjectMarqueeMove {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  // past-project-item-wrap에 이벤트 연결
+  const wraps = document.querySelectorAll('.past-project-item-wrap');
+  wraps.forEach(wrap => {
+    wrap.addEventListener('mouseenter', function() {
+      // 이미 있으면 중복 생성 방지
+      if (wrap.querySelector(`.${MARQUEE_CLASS}`)) return;
+      const marquee = document.createElement('div');
+      marquee.className = MARQUEE_CLASS;
+      const track = document.createElement('div');
+      track.className = 'marquee-track';
+      // 여러 번 반복
+      for (let i = 0; i < 10; i++) {
+        const span = document.createElement('span');
+        span.className = 'marquee-text';
+        span.textContent = MARQUEE_TEXT;
+        track.appendChild(span);
+      }
+      marquee.appendChild(track);
+      wrap.style.position = 'relative'; // marquee 위치 기준
+      wrap.appendChild(marquee);
+    });
+    wrap.addEventListener('mouseleave', function() {
+      const marquee = wrap.querySelector(`.${MARQUEE_CLASS}`);
+      if (marquee) marquee.remove();
+    });
+  });
+})();
+
+// 모바일에서 .site-header-logo-link 텍스트를 Tomorrow로 변경
+    function updateLogoTextForMobile() {
+      var logo = document.getElementById('mainLogoText');
+      if (!logo) return;
+      if (window.innerWidth <= 768) {
+        logo.textContent = 'Tomorrow';
+      } else {
+        logo.textContent = 'Sayjakki';
+      }
+    }
+    window.addEventListener('resize', updateLogoTextForMobile);
+    window.addEventListener('DOMContentLoaded', updateLogoTextForMobile);
+
+    // project-thumb 스크롤 등장 애니메이션
+    function onScrollRevealThumbs() {
+      var thumbs = document.querySelectorAll('.project-thumb');
+      var windowH = window.innerHeight;
+      thumbs.forEach(function(thumb) {
+        var rect = thumb.getBoundingClientRect();
+        if (rect.top < windowH - 50) {
+          thumb.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', onScrollRevealThumbs);
+    window.addEventListener('DOMContentLoaded', onScrollRevealThumbs);
 
