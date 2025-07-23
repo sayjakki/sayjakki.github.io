@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  <title>project2</title>
+  <title>project1</title>
   <!-- CSS 연결 -->
   <link rel="stylesheet" href="../css/style.css" />
 
@@ -16,93 +16,123 @@
 </head>
 
 <body>
-  <!-- Header -->
-  <header class="site-header animate-nav">
-    <div class="container">
-            <a href="/" class="logo">
-        <span class="desktop-logo">Branding & Design Studio</span>
-        <span class="mobile-logo">Tomorrow</span>
-      </a>
-
-      <nav class="nav-links">
-        <a href="pages/about.html">About</a>
-        <a href="https://www.instagram.com/sayjakki/">Insta</a>
-        <a href="#">Let’s Talk</a>
-      </nav>
-
-      <!-- 햄버거 버튼 -->
+  <!-- [4] HEADER: 네비게이션 + 로고 + 햄버거 메뉴 -->
+  <div class="site-header-bar" id="siteHeaderBar">
+    <div class="site-header-inner">
+      <div class="site-header-content">
+        <a class="site-header-logo-link" href="../index.html" id="mainLogoText" style="position:relative; z-index:10; display:block;">
+          Sayjakki
+        </a>
+        <div class="site-header-links">
+          <div class="site-header-link-item">
+            <p class="site-header-link-text">
+              <a class="site-header-link" href="about.html">About</a>
+            </p>
+          </div>
+          <div class="site-header-link-item">
+            <p class="site-header-link-text">
+              <a class="site-header-link" href="https://www.instagram.com/workbytomorrow/" target="_blank" rel="noopener">Insta</a>
+            </p>
+          </div>
+          <div class="site-header-link-item">
+            <p class="site-header-link-text">
+              <a class="site-header-link" href="mailto:info@workbytomorrow.com" target="_blank" rel="noopener">Let's Talk</a>
+            </p>
+          </div>
+        </div>
+      </div>
       <button class="hamburger" id="hamburger">
         <span></span>
+        <span class="invisible"></span>
         <span></span>
       </button>
     </div>
-  </header>
-
-
-  <!-- 오버레이 메뉴 -->
-  <div class="overlay-nav" id="overlayNav">
-    <nav class="overlay-menu">
-      <a href="pages/about.html">About</a>
-      <a href="https://www.instagram.com/sayjakki/a">Insta</a>
-      <a href="#contact">Let’s Talk</a>
-    </nav>
   </div>
+  
+  <div class="overlay-nav" id="overlayNav">
+    <div class="overlay-header">
+      <a href="/" class="logo white-logo">Tomorrow</a>
+        <button class="hamburger open" id="hamburgerClose">
+          <span></span>
+          <span class="invisible"></span>
+          <span></span>
+        </button>
+      </div>
+
+      <nav class="overlay-menu">
+        <a href="pages/about.html">About</a>
+        <a href="https://www.instagram.com/sayjakki/">Insta</a>
+        <a href="#contact">Let’s Talk</a>
+      </nav>
+
+      <div class="overlay-footer">
+        <div>© 2024</div>
+        <div>Branding & Design Studio</div>
+      </div>
+    </div>
 
 
   <!-- Hero Marquee -->
   <section class="hero-marquee-wrapper">
     <div class="hero-marquee-track">
-      <span class="fade-in-word delay-1">Main</span>&nbsp;
-      <span class="fade-in-word delay-2">Election</span>&nbsp;&nbsp;&nbsp;
+      <span class="fade-in-word delay-1">Bithumb</span>&nbsp;
+      <span class="fade-in-word delay-2">Graphic Redesign</span>&nbsp;&nbsp;&nbsp;
 
     <!-- 이후 반복되는 marquee 텍스트는 일반 span으로 -->
-      <span>Main Election&nbsp;&nbsp;&nbsp;</span>
-      <span>Main Election&nbsp;&nbsp;&nbsp;</span>
+      <span>News Data Visualization&nbsp;&nbsp;&nbsp;</span>
+      <span>News Data Visualization&nbsp;&nbsp;&nbsp;</span>
     </div>
   </section>
 
   <!-- Project Content -->
-  <section class="project-detail-container">
-    <div class="container">
-      <div class="project-content-grid">
+  <div class="project-detail-container">
         <!-- ✅ sticky 텍스트 영역 -->
         <div class="project-info">
           <div class="project-meta">
-            <div class="meta-item">
-              <strong>Client</strong>
-               <span class="meta-text">Yonhap News</span>
+           <!-- <div class="meta-item">
+               <strong>Client</strong>
+              <span class="meta-text">YonhapNewsTV</span>
             </div>
             <div class="meta-item">
               <strong>Year</strong>
-              <span class="meta-text">2022</span>
-            </div>
+              <span class="meta-text">2019-</span> 
+            </div> -->
           </div>
-          <div>
-            <strong>About</strong>
-            <p>
-              We set out to break from politics as usual, creating a bold, fresh alternative for a political brand. At its core is a simple, memorable green circle—symbolizing a sustainable planet and a call to action: Go Green. Its simplicity allows anyone to recreate it with everyday materials, reinforcing the idea of collective action and a future shaped by all of us.
-              <br><br>
-              Across 2024, hundreds of Green Party members—from volunteers to MPs—came together in online workshops to help shape the brand and uncover the key issues facing Canadians. Their insights directly informed the strategy, ensuring relevance and authenticity in every image and message.
-              <br><br>
-              The typography reflects the Party's modernity and heritage. GP Neue Montreal, designed by Pangram Pangram with custom modifications by Matt Boyd, is paired with Gelica, a contemporary take on Windsor—the Green Party’s original typeface from 1984.
-            </p>
-          </div>
-          <div>
-            <strong>Services</strong>
-            <p>...</p>
+          <div class="meta-item">
+            <strong>뉴스 데이터를 명확하고 몰입감 있게</strong> <br>
+            <span class="meta-text">연합뉴스TV의 데일리 뉴스 콘텐츠에서 시청자에게 데이터를 효과적으로 전달하기 위해,  
+              방송용 CG 인포그래픽의 시각 정보 구조와 디자인을 기획·제작했습니다. <br><br>
+              
+              정치, 경제, 사회, 문화, 스포츠 등 다양한 통계 기반 이슈에 맞춰  
+              정보의 우선순위를 고려한 그래픽 구성과 컬러 코딩, 데이터 중심 레이아웃을 적용하여  
+              시청자의 이해도를 높이고 뉴스 콘텐츠의 몰입감을 강화했으며,  
+              방송 환경에 최적화된 시각 흐름과 해상도 기준을 반영해 전달력을 극대화했습니다. <br><br>
+
+              데이터를 뉴스 흐름 속에 자연스럽게 녹여내며,  
+              정확한 정보 전달과 시각적 신뢰감을 동시에 설계한 방송 CG 프로젝트입니다.</span>
           </div>
         </div>
 
         <!-- ✅ 스크롤 가능한 이미지 영역 -->
-        <div class="project-image hero-image">
-          <img src="../assets/img/main-election.png" alt="Main Election" sizes="calc(100vw - 40px)" />
-          <img src="../assets/img/main-election.png" alt="Main Election" sizes="calc(100vw - 40px)" />
-          <img src="../assets/img/main-election.png" alt="Main Election" sizes="calc(100vw - 40px)" />
-          <img src="../assets/img/main-election.png" alt="Main Election" sizes="calc(100vw - 40px)" />
+        <div class="project-image">
+          <img src="../assets/img/project2/P2-1.png" alt="Main Election" sizes="calc(100vw - 40px)" />
+          <img src="../assets/img/project2/P2-2.png" alt="Main Election" sizes="calc(100vw - 40px)" />
+          <img src="../assets/img/project2/P2-3.png" alt="Main Election" sizes="calc(100vw - 40px)" />
+          <img src="../assets/img/project2/P2-4.png" alt="Main Election" sizes="calc(100vw - 40px)" />
+          <img src="../assets/img/project2/P2-5.png" alt="Main Election" sizes="calc(100vw - 40px)" />
+          <img src="../assets/img/project2/P2-6.png" alt="Main Election" sizes="calc(100vw - 40px)" />
         </div>
-      </div>
+          <!-- ✅ 영상넣을때 사용하슈
+          <video
+            src="../assets/img/green-party-tomorrow.mp4"
+            autoplay
+            loop
+            muted
+            playsinline
+            style="width: 100%; height: auto; display: block; object-fit: cover;">
+            Your browser does not support the video tag.
+          </video> -->
     </div>
-  </section>
 
   <!-- ✅ Featured Projects 전체 섹션 -->
   <section class="featured-projects">
@@ -114,38 +144,208 @@
     </div>
 
     <!-- ✅ 프로젝트 썸네일 3개를 보여주는 그리드 영역 -->
-  <div class="featured-grid">
-    <div class="featured-item-wrap">
+    <div class="featured-grid">
+      <div class="featured-item-wrap">
       <div class="featured-item yellow"></div>
       <div class="featured-title">Invictus Games</div>
-    </div>
+      </div>
 
-    <div class="featured-item-wrap">
+      <div class="featured-item-wrap">
       <div class="featured-item pink"></div>
       <div class="featured-title">1 Mill Road</div>
-    </div>
+      </div>
 
-    <div class="featured-item-wrap">
+      <div class="featured-item-wrap">
       <div class="featured-item green"></div>
       <div class="featured-title">Mountain Equipment Company</div>
+      </div>
     </div>
-  </div>
   </section>
 
- <footer class="site-footer">
-  <section class="footer-hero">
-    <h1 class="footer-title">Tomorrow</h1>
+  <section class="past-projects">
+    <div class="spacer"></div>
+    <div class="past-projects-header">
+      <div class="past-projects-richtext">
+        <p class="past-projects-heading">Past Projects</p>
+      </div>
+    </div>
+    <div class="past-projects-list">
+      <div class="past-project-item-wrap">
+        <div class="past-project-top-border"></div>
+        <a class="past-project-item" href="#">
+          <div class="past-project-item-inner">
+            <div class="past-project-title">Design Vancouver Festival</div>
+            <div class="past-project-year">2024</div>
+            <div class="past-project-bg"></div>
+          </div>
+        </a>
+      </div>
+      <div class="past-project-item-wrap">
+        <div class="past-project-top-border"></div>
+        <a class="past-project-item" href="#">
+          <div class="past-project-item-inner">
+            <div class="past-project-title">Metrolinx 'T Symbol'</div>
+            <div class="past-project-year">2024</div>
+            <div class="past-project-bg"></div>
+          </div>
+        </a>
+      </div>
+      <div class="past-project-item-wrap">
+        <div class="past-project-top-border"></div>
+        <a class="past-project-item" href="./work/invictus-games">
+          <div class="past-project-item-inner">
+            <div class="past-project-title">Invictus Games 2025 ↗</div>
+            <div class="past-project-year">2024</div>
+            <div class="past-project-bg"></div>
+          </div>
+        </a>
+      </div>
+      <div class="past-project-item-wrap">
+        <div class="past-project-top-border"></div>
+        <a class="past-project-item" href="./work/geosource-energy">
+          <div class="past-project-item-inner">
+            <div class="past-project-title">Geosource Energy ↗</div>
+            <div class="past-project-year">2023</div>
+            <div class="past-project-bg"></div>
+          </div>
+        </a>
+      </div>
+      <div class="past-project-item-wrap">
+        <div class="past-project-top-border"></div>
+        <a class="past-project-item" href="./work/christine-sinclair-12">
+          <div class="past-project-item-inner">
+            <div class="past-project-title">Christine Sinclair ↗</div>
+            <div class="past-project-year">2023</div>
+            <div class="past-project-bg"></div>
+          </div>
+        </a>
+      </div>
+      <div class="past-project-item-wrap">
+        <div class="past-project-top-border"></div>
+        <a class="past-project-item" href="#">
+          <div class="past-project-item-inner">
+            <div class="past-project-title">Props.Cash</div>
+            <div class="past-project-year">2023</div>
+            <div class="past-project-bg"></div>
+          </div>
+        </a>
+      </div>
+      <div class="past-project-item-wrap">
+        <div class="past-project-top-border"></div>
+        <a class="past-project-item" href="./work/1-mill-road">
+          <div class="past-project-item-inner">
+            <div class="past-project-title">1 Mill Road ↗</div>
+            <div class="past-project-year">2023</div>
+            <div class="past-project-bg"></div>
+          </div>
+        </a>
+      </div>
+      <div class="past-project-item-wrap">
+        <div class="past-project-top-border"></div>
+        <a class="past-project-item" href="./work/locomotive">
+          <div class="past-project-item-inner">
+            <div class="past-project-title">Locomotive ↗</div>
+            <div class="past-project-year">2023</div>
+            <div class="past-project-bg"></div>
+          </div>
+        </a>
+      </div>
+      <div class="past-project-item-wrap">
+        <div class="past-project-top-border"></div>
+        <a class="past-project-item" href="./work/vinyl-records">
+          <div class="past-project-item-inner">
+            <div class="past-project-title">Vinyl Records ↗</div>
+            <div class="past-project-year">2022</div>
+            <div class="past-project-bg"></div>
+          </div>
+        </a>
+      </div>
+      <div class="past-project-item-wrap">
+        <div class="past-project-top-border"></div>
+        <a class="past-project-item" href="./work/form-swim">
+          <div class="past-project-item-inner">
+            <div class="past-project-title">FORM Swim ↗</div>
+            <div class="past-project-year">2022</div>
+            <div class="past-project-bg"></div>
+          </div>
+        </a>
+      </div>
+      <div class="past-project-item-wrap">
+        <div class="past-project-top-border"></div>
+        <a class="past-project-item" href="./work/skate-canada">
+          <div class="past-project-item-inner">
+            <div class="past-project-title">Skate Canada ↗</div>
+            <div class="past-project-year">2022</div>
+            <div class="past-project-bg"></div>
+          </div>
+        </a>
+      </div>
+      <div class="past-project-item-wrap">
+        <div class="past-project-top-border"></div>
+        <a class="past-project-item" href="./work/moutain-equipment-company">
+          <div class="past-project-item-inner">
+            <div class="past-project-title">Mountain Equipment Company ↗</div>
+            <div class="past-project-year">2021</div>
+            <div class="past-project-bg"></div>
+          </div>
+        </a>
+      </div>
+      <div class="past-project-item-wrap">
+        <div class="past-project-top-border"></div>
+        <a class="past-project-item" href="#">
+          <div class="past-project-item-inner">
+            <div class="past-project-title">International Olympic Committee</div>
+            <div class="past-project-year">2021</div>
+            <div class="past-project-bg"></div>
+          </div>
+        </a>
+      </div>
+      <div class="past-project-item-wrap">
+        <div class="past-project-top-border"></div>
+        <a class="past-project-item" href="#">
+          <div class="past-project-item-inner">
+            <div class="past-project-title">#StrongerTogether Tokyo 2020</div>
+            <div class="past-project-year">2021</div>
+            <div class="past-project-bg"></div>
+          </div>
+        </a>
+      </div>
+      <div class="past-project-item-wrap">
+        <div class="past-project-top-border"></div>
+        <a class="past-project-item" href="#">
+          <div class="past-project-item-inner">
+            <div class="past-project-title">Order of Sport</div>
+            <div class="past-project-year">2019</div>
+            <div class="past-project-bg"></div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="past-projects-list-more">
+      <div class="past-projects-list-more-container">
+        <div class="past-projects-list-more-box">
+            <div class="past-projects-list-more-richtext">
+              <p class="past-projects-list-more-text">Show All (34)</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <div class="footer-info">
-    <div class="footer-left">©2024</div>
-    <div class="footer-center">Branding & Design Studio</div>
-    <div class="footer-right">
-      <a href="#">Instagram</a>
-      <a href="#">Let’s Talk</a>
+  <footer class="site-footer">
+    <section class="footer-hero">
+      <h1 class="footer-title">Tomorrow</h1>
+    </section>
+
+    <div class="footer-info">
+      <div class="footer-left">© 2024</div>
+      <div class="footer-right">
+        <a href="https://www.instagram.com/sayjakki/" class="desktop-only">Insta</a>
+        <a href="mailto:info@workbytomorrow.com" class="desktop-only">Let’s Talk</a>
+        <a href="index.html" class="branding-mobile">Branding & Design</a>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
 
   <script src="../js/script.js" defer></script>
