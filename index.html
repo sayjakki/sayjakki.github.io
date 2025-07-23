@@ -15,25 +15,6 @@
   <!-- [3] Fitty 플러그인: 히어로 텍스트 대응용 (유지) -->
   <script src="https://cdn.jsdelivr.net/npm/fitty@2.3.6/dist/fitty.min.js"></script>
 
-  <style>
-    @media (max-width: 768px) {
-      .site-header-link-item {
-        display: none !important;
-      }
-      .site-header-logo-link {
-        font-size: 24px !important;
-        font-weight: 900 !important;
-        letter-spacing: 0.02em;
-        color: #111 !important;
-      }
-      .footer-right a.desktop-only {
-        display: none !important;
-      }
-      .footer-right a.branding-mobile {
-        display: inline-block !important;
-      }
-    }
-  </style>
 </head>
 
 <body>
@@ -41,9 +22,11 @@
   <div class="site-header-bar" id="siteHeaderBar">
     <div class="site-header-inner">
       <div class="site-header-content">
-        <a class="site-header-logo-link" href="index.html" id="mainLogoText" style="position:relative; z-index:10; display:block;">
-          Branding &amp; Design Studio
-        </a>
+        <p class="site-header-logo-text">
+          <a class="site-header-logo-link" href="index.html" id="mainLogoText">
+            Sayjakki
+          </a>
+        </p>
         <div class="site-header-links">
           <div class="site-header-link-item">
             <p class="site-header-link-text">
@@ -61,12 +44,12 @@
             </p>
           </div>
         </div>
+        <button class="hamburger" id="hamburger">
+          <span></span>
+          <span class="invisible"></span>
+          <span></span>
+        </button>
       </div>
-      <button class="hamburger" id="hamburger">
-        <span></span>
-        <span class="invisible"></span>
-        <span></span>
-      </button>
     </div>
   </div>
     
@@ -89,7 +72,7 @@
 
       <div class="overlay-footer">
         <div>© 2024</div>
-        <div>Branding & Design Studio</div>
+        <div>Sayjakki</div>
       </div>
     </div>
   
@@ -112,17 +95,17 @@
         <!-- ✅ Project 1 -->
         <a href="pages/project1.html" class="project-item yellow fade-up delay-1">
           <div class="project-thumb">
-              <img src="assets/img/main/main_sample_image1.avif" alt="Project 1 Thumbnail" sizes="(min-width: 1400px) max((100vw - 60px) / 2, 20px), (min-width: 1200px) and (max-width: 1399px) max((100vw - 60px) / 2, 20px), (min-width: 810px) and (max-width: 1199px) max((100vw - 60px) / 2, 20px), (max-width: 809px) calc(100vw - 40px)">
+              <img src="assets/img/main/P1.png" alt="Project 1 Thumbnail" sizes="(min-width: 1400px) max((100vw - 60px) / 2, 20px), (min-width: 1200px) and (max-width: 1399px) max((100vw - 60px) / 2, 20px), (min-width: 810px) and (max-width: 1199px) max((100vw - 60px) / 2, 20px), (max-width: 809px) calc(100vw - 40px)">
             <div class="circle-overlay"><span></span></div>
           </div>
-          <div class="project-title">News Data Visualization</div>
+          <div class="project-title">bithumb Graphic Redesign</div>
           <div class="project-gap"></div>
         </a>
 
         <!-- ✅ Project 2 -->
         <a href="pages/project2.html" class="project-item blue fade-up delay-1">
           <div class="project-thumb">
-              <img src="assets/img/main/main_sample_image2.avif" alt="Project 2 Thumbnail" sizes="(min-width: 1400px) max((100vw - 60px) / 2, 20px), (min-width: 1200px) and (max-width: 1399px) max((100vw - 60px) / 2, 20px), (min-width: 810px) and (max-width: 1199px) max((100vw - 60px) / 2, 20px), (max-width: 809px) calc(100vw - 40px)">
+              <img src="assets/img/main/P2.png" alt="Project 2 Thumbnail" sizes="(min-width: 1400px) max((100vw - 60px) / 2, 20px), (min-width: 1200px) and (max-width: 1399px) max((100vw - 60px) / 2, 20px), (min-width: 810px) and (max-width: 1199px) max((100vw - 60px) / 2, 20px), (max-width: 809px) calc(100vw - 40px)">
             <div class="circle-overlay"><span></span></div>
           </div>
           <div class="project-title">Project 2</div>
@@ -130,7 +113,7 @@
         </a>
 
         <!-- ✅ Project 3 -->
-        <a href="pages/project2.html" class="project-item blue fade-up delay-1">
+        <a href="pages/project3.html" class="project-item blue fade-up delay-1">
           <div class="project-thumb">
             <img src="assets/img/main/main_sample_image3.avif" alt="Project 3 Thumbnail" sizes="(min-width: 1400px) max((100vw - 60px) / 2, 20px), (min-width: 1200px) and (max-width: 1399px) max((100vw - 60px) / 2, 20px), (min-width: 810px) and (max-width: 1199px) max((100vw - 60px) / 2, 20px), (max-width: 809px) calc(100vw - 40px)">
             <div class="circle-overlay"><span></span></div>
@@ -149,7 +132,7 @@
           <div class="project-gap"></div>
         </a>
 
-        <!-- ✅ Project 5 -->
+        <!-- ✅ Project 5 
         <a href="pages/project5.html" class="project-item red fade-up delay-1">
           <div class="project-thumb"> 
             <img src="assets/img/main/main_sample_image5.avif" alt="Project 5 Thumbnail" sizes="(min-width: 1400px) max((100vw - 60px) / 2, 20px), (min-width: 1200px) and (max-width: 1399px) max((100vw - 60px) / 2, 20px), (min-width: 810px) and (max-width: 1199px) max((100vw - 60px) / 2, 20px), (max-width: 809px) calc(100vw - 40px)">
@@ -157,9 +140,9 @@
           </div>
           <div class="project-title">Project 4</div>
           <div class="project-gap"></div>
-        </a>
+        </a> -->
 
-        <!-- ✅ Project 6 -->
+        <!-- ✅ Project 6 
         <a href="pages/project2.html" class="project-item blue fade-up delay-1">
           <div class="project-thumb"> 
             <img src="assets/img/main/main_sample_image6.avif" alt="Project 6 Thumbnail" sizes="(min-width: 1400px) max((100vw - 60px) / 2, 20px), (min-width: 1200px) and (max-width: 1399px) max((100vw - 60px) / 2, 20px), (min-width: 810px) and (max-width: 1199px) max((100vw - 60px) / 2, 20px), (max-width: 809px) calc(100vw - 40px)">
@@ -167,9 +150,9 @@
           </div>
           <div class="project-title">Project 4</div>
           <div class="project-gap"></div>
-        </a>
+        </a> -->
 
-        <!-- ✅ Project 7 -->
+        <!-- ✅ Project 7 
         <a href="pages/project7.html" class="project-item red fade-up delay-1">
           <div class="project-thumb"> 
             <img src="assets/img/main/main_sample_image7.avif" alt="Project 7 Thumbnail" sizes="(min-width: 1400px) max((100vw - 60px) / 2, 20px), (min-width: 1200px) and (max-width: 1399px) max((100vw - 60px) / 2, 20px), (min-width: 810px) and (max-width: 1199px) max((100vw - 60px) / 2, 20px), (max-width: 809px) calc(100vw - 40px)">
@@ -177,9 +160,9 @@
           </div>
           <div class="project-title">Project 4</div>
           <div class="project-gap"></div>
-        </a>
+        </a> -->
 
-        <!-- ✅ Project 8 -->
+        <!-- ✅ Project 8 
         <a href="pages/project8.html" class="project-item red fade-up delay-1">
           <div class="project-thumb"> 
             <img src="assets/img/main/main_sample_image8.avif" alt="Project 8 Thumbnail" sizes="(min-width: 1400px) max((100vw - 60px) / 2, 20px), (min-width: 1200px) and (max-width: 1399px) max((100vw - 60px) / 2, 20px), (min-width: 810px) and (max-width: 1199px) max((100vw - 60px) / 2, 20px), (max-width: 809px) calc(100vw - 40px)">
@@ -187,9 +170,9 @@
           </div>
           <div class="project-title">Project 4</div>
           <div class="project-gap"></div>
-        </a>
+        </a> -->
 
-        <!-- ✅ Project 9 -->
+        <!-- ✅ Project 9 
         <a href="pages/project9.html" class="project-item red fade-up delay-1">
           <div class="project-thumb"> 
             <img src="assets/img/main/main_sample_image9.avif" alt="Project 9 Thumbnail" sizes="(min-width: 1400px) max((100vw - 60px) / 2, 20px), (min-width: 1200px) and (max-width: 1399px) max((100vw - 60px) / 2, 20px), (min-width: 810px) and (max-width: 1199px) max((100vw - 60px) / 2, 20px), (max-width: 809px) calc(100vw - 40px)">
@@ -197,9 +180,9 @@
           </div>
           <div class="project-title">Project 4</div>
           <div class="project-gap"></div>
-        </a>
+        </a> -->
 
-        <!-- ✅ Project 10 -->
+        <!-- ✅ Project 10 
         <a href="pages/project10.html" class="project-item red fade-up delay-1">
           <div class="project-thumb"> 
             <img src="assets/img/main/main_sample_image10.avif" alt="Project 10 Thumbnail" sizes="(min-width: 1400px) max((100vw - 60px) / 2, 20px), (min-width: 1200px) and (max-width: 1399px) max((100vw - 60px) / 2, 20px), (min-width: 810px) and (max-width: 1199px) max((100vw - 60px) / 2, 20px), (max-width: 809px) calc(100vw - 40px)">
@@ -207,9 +190,9 @@
           </div>
           <div class="project-title">Project 4</div>
           <div class="project-gap"></div>
-        </a>
+        </a> -->
 
-        <!-- ✅ Project 11 -->
+        <!-- ✅ Project 11 
         <a href="pages/project11.html" class="project-item red fade-up delay-1">
           <div class="project-thumb"> 
             <img src="assets/img/main/main_sample_image11.avif" alt="Project 11 Thumbnail" sizes="(min-width: 1400px) max((100vw - 60px) / 2, 20px), (min-width: 1200px) and (max-width: 1399px) max((100vw - 60px) / 2, 20px), (min-width: 810px) and (max-width: 1199px) max((100vw - 60px) / 2, 20px), (max-width: 809px) calc(100vw - 40px)">
@@ -217,7 +200,7 @@
           </div>
           <div class="project-title">Project 4</div>
           <div class="project-gap"></div>
-        </a>
+        </a> -->
       </div>
     </div>
   </section>
@@ -403,40 +386,12 @@
       <div class="footer-right">
         <a href="https://www.instagram.com/sayjakki/" class="desktop-only">Insta</a>
         <a href="mailto:info@workbytomorrow.com" class="desktop-only">Let’s Talk</a>
-        <a href="index.html" class="branding-mobile">Branding & Design</a>
+        <a href="index.html" class="branding-mobile">Sayjakki</a>
       </div>
     </div>
   </footer>
 
   <!-- [9] JS 연결 -->
   <script src="js/script.js" defer></script>
-  <script>
-    // 모바일에서 .site-header-logo-link 텍스트를 Tomorrow로 변경
-    function updateLogoTextForMobile() {
-      var logo = document.getElementById('mainLogoText');
-      if (!logo) return;
-      if (window.innerWidth <= 768) {
-        logo.textContent = 'Tomorrow';
-      } else {
-        logo.textContent = 'Branding & Design Studio';
-      }
-    }
-    window.addEventListener('resize', updateLogoTextForMobile);
-    window.addEventListener('DOMContentLoaded', updateLogoTextForMobile);
-
-    // project-thumb 스크롤 등장 애니메이션
-    function onScrollRevealThumbs() {
-      var thumbs = document.querySelectorAll('.project-thumb');
-      var windowH = window.innerHeight;
-      thumbs.forEach(function(thumb) {
-        var rect = thumb.getBoundingClientRect();
-        if (rect.top < windowH - 60) {
-          thumb.classList.add('visible');
-        }
-      });
-    }
-    window.addEventListener('scroll', onScrollRevealThumbs);
-    window.addEventListener('DOMContentLoaded', onScrollRevealThumbs);
-  </script>
 </body>
 </html>
