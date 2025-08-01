@@ -130,13 +130,12 @@ if (pastProjectsListMore && window.innerWidth > 1024) {
   const list = document.querySelector('.past-projects-list');
   if (!moreBtn || !list) return;
 
-  // 이미 확장된 상태인지 저장
   let expanded = false;
-  // 확장/축소에 사용할 아이템들
   const items = Array.from(list.querySelectorAll('.past-project-item-wrap'));
 
-  // 기본적으로 6개만 보이게, 나머지는 숨김
-  const defaultShow = 6;
+  const defaultShow = 3;
+  const expandedShow = items.length;// ⭐ 최대 보여줄 개수
+
   items.forEach((item, idx) => {
     if (idx >= defaultShow) {
       item.style.maxHeight = '0';
@@ -146,31 +145,27 @@ if (pastProjectsListMore && window.innerWidth > 1024) {
   });
 
   moreBtn.addEventListener('click', function() {
+    const text = moreBtn.querySelector('.past-projects-list-more-text');
     if (!expanded) {
-      // 확장: 나머지 아이템 슬라이드 다운
       items.forEach((item, idx) => {
-        if (idx >= defaultShow) {
+        if (idx >= defaultShow && idx < expandedShow) {
           item.style.maxHeight = item.scrollHeight + 'px';
         }
       });
       expanded = true;
-      // 버튼 텍스트 변경
-      const text = moreBtn.querySelector('.past-projects-list-more-text');
       if (text) text.textContent = 'SHOW LESS';
     } else {
-      // 축소: 나머지 아이템 슬라이드 업
       items.forEach((item, idx) => {
-        if (idx >= defaultShow) {
+        if (idx >= defaultShow && idx < expandedShow) {
           item.style.maxHeight = '0';
         }
       });
       expanded = false;
-      // 버튼 텍스트 원복
-      const text = moreBtn.querySelector('.past-projects-list-more-text');
-      if (text) text.textContent = 'Show All (34)';
+      if (text) text.textContent = `Show All (${expandedShow})`;
     }
   });
 })();
+
 
 // 스크롤 방향에 따라 헤더 숨김/노출
 let lastScrollY = window.scrollY;
@@ -206,21 +201,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 미리보기 이미지 정보 (프로젝트명과 이미지 경로 매핑)
   const previewImages = {
-    'Design Vancouver Festival': '../assets/img/main/main_sample_image1.avif',
-    "Metrolinx 'T Symbol'": '../assets/img/main/main_sample_image2.avif',
-    'Invictus Games 2025 ↗': '../assets/img/main/main_sample_image3.avif',
-    'Geosource Energy ↗': '../assets/img/main/main_sample_image4.avif',
-    'Christine Sinclair ↗': '../assets/img/main/main_sample_image5.avif',
-    'Props.Cash': '../assets/img/main/main_sample_image6.avif',
-    '1 Mill Road ↗': '../assets/img/main/main_sample_image7.avif',
-    'Locomotive ↗': '../assets/img/main/main_sample_image8.avif',
-    'Vinyl Records ↗': '../assets/img/main/main_sample_image9.avif',
-    'FORM Swim ↗': '../assets/img/main/main_sample_image10.avif',
-    'Skate Canada ↗': '../assets/img/main/main_sample_image11.avif',
-    'Mountain Equipment Company ↗': '../assets/img/main/main_sample_image12.avif',
-    'International Olympic Committee': '../assets/img/main/main_sample_image1.avif',
-    '#StrongerTogether Tokyo 2020': '../assets/img/main/main_sample_image2.avif',
-    'Order of Sport': '../assets/img/main/main_sample_image3.avif',
+      "지구촌 톡톡 Opening Title Design": "./assets/img/main/main_sample_image1.avif",
+      "SK hynix Service Design": "./images/thumb_sk_hynix.jpg",
+      "WineGraph GUI Design": "./images/thumb_winegraph.jpg",
+      "LG Electronics UX Research": "./images/thumb_lg.jpg",
+      "Seoul medical center Service Design": "./images/thumb_seoul_medical.jpg",
+      "Arirang TV News Graphic": "./images/thumb_arirang.jpg"
   };
 
   // 미리보기 이미지 DOM 생성
